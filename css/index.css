@@ -1,7 +1,17 @@
+@font-face {
+  font-family: Montserrat;
+  src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: Playfair;
+  src: url('../assets/fonts/Playfair/PlayfairDisplay-SemiBoldItalic.ttf');
+}
+
 :root {
     --white: #fff;
-    --shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-    --input-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    --light-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    --dark-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     --btn-bg: #5b43b3;
     --btn-hover: #7761c5;
     --light-bg: #f0f1fd;
@@ -11,7 +21,67 @@
     --input-bg: #e3e6fc;
     --section-height: 80vh;
     --h1-size: 3rem;
+    --h2-size: 2rem;
     --p-size: 1.7rem;
+  }
+
+  @media (width < 462px){
+    :root {
+      --h1-size: 1.8rem;
+      --p-size: 1.2rem;
+      --section-height: 50vh;
+    } 
+
+    h1 {
+      text-align: center;
+    }
+  
+    p {
+      text-align: center;
+    }
+
+    .main__section form {
+      width: 90%;
+    }
+
+    .hero__section {
+      clip-path: ellipse(30% 30% at 50% 50%);
+    }
+  }
+
+  @media (width < 1024px ){ 
+    .main__section form {
+      width: 80%;
+    }
+
+    .hero__section {
+      clip-path: ellipse(30% 30% at 50% 50%);
+    }
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: var(--light-bg);
+    font-family: Montserrat;
+  }
+
+  h1,
+  h2 {
+    font-family: Playfair;
   }
 
   section {
@@ -19,12 +89,12 @@
   }
 
   .hero__section {
-    position: relative;
+    clip-path: ellipse(49% 50% at 50% 50%);
     display: flex;
+    color: var(--white);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--white);
     background: linear-gradient(
       rgba(0, 0, 0, .7),
       rgba(0, 0, 0, .5)
@@ -40,3 +110,86 @@
   .hero__section p {
     font-size: var(--p-size);
   }
+
+  .main__section h2 {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: var(--h2-size);
+  }
+
+  form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem auto;
+    box-shadow: var(--dark-shadow);
+    background-color: var(--light-white);
+    border-radius: 5px;
+  }
+
+  form input:not(input[type='submit']),
+  form textarea {
+    background: var(--input-bg);
+    border-radius: 7px;
+    padding: 1rem;
+    padding-left: 2rem;  
+  }
+
+  form input:not(input[type='submit']),
+  form textarea {
+    width: 70%;
+  }
+
+  form input::placeholder,
+  form textarea::placeholder {
+    padding: 1rem;
+    padding-left: 2rem;
+    color: var(--light-black);
+    font-size: .9rem;
+    font-family: Playfair;
+  }
+
+  form input:focus::placeholder,
+  form textarea:focus::placeholder {
+    color: transparent;
+  }
+
+  form textarea {
+    resize: none;
+    height: 5rem;
+  }
+
+  form input:not(input[type='radio']) {
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+    height: 2rem;
+  }
+
+  form input[type='radio'] {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  form input[type='submit'] {
+    width: 5rem;
+    height: 3rem;
+    border-radius: 5px;
+    background: var(--btn-bg);
+    color: var(--white);
+    transition: var(--transition);
+
+  }
+
+  form input[type='submit']:hover {
+    background: var(--btn-hover);
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  ul {
+    line-height: 1.5;
+    width: 70%;
+  }
+

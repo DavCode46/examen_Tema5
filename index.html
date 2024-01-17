@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/index.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
     <header>
-        <section class="hero__section">
-            <h1>Asturian Natural Trails</h1>
-            <p>Las mejores rutas de montaña para hacer senderismo</p>
-        </section>
+      <section class="hero__section">
+        <h1>Asturian Natural Trails</h1>
+        <p>Las mejores rutas de montaña para hacer senderismo</p>
+      </section>
     </header>
 
     <main>
-        <section class="main__section">
-            <form action="#" method="get" id="form">
-                <input type="text" name="name" id="name" placeholder="name">
-                <input type="text" name="email" id="email" placeholder="Correo electrónico">
-                <label for="radio1">Solicitud de información adicional</label>
-                <input type="radio" name="radio1" id="radio1" checked>
-                <label for="radio2">Reserva de ruta</label>
-                <input type="radio" name="radio2" id="radio2">
-                <input type="submit" value="info" id="info-btn">
-                <textarea name="message" id="message" cols="30" rows="10" placeholder="Por favor, inserta un mensaje"></textarea>
-                <input type="submit" value="Enviar" id="submit-btn">
-                <ul id="errors-message">
+      <section class="main__section">
+        <h2>Contáctanos</h2>
+        <form action="#" method="get" id="form">
+          <input type="text" name="name" id="name" placeholder="Nombre" />
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Correo electrónico"
+          />
 
-                </ul>
-            </form>
-        </section>
+          <label for="radio1">Solicitud de información adicional</label>
+          <input type="radio" name="radio" id="radio1" checked />
+          <label for="radio2">Reserva de ruta</label>
+          <input type="radio" name="radio" id="radio2" />
+          <input type="submit" value="info" id="info-btn" />
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Por favor, inserta un mensaje"
+          ></textarea>
+          <input type="submit" value="Enviar" id="submit-btn" />
+          <ul id="errors-message">
+            
+          </ul>
+        </form>
+      </section>
     </main>
     <script src="js/index.js"></script>
-</body>
+  </body>
 </html>
