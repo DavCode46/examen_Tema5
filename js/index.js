@@ -1,7 +1,7 @@
 const patterns = {
-  name: /^[A-Za-zÀ-ÖØ-öø-ÿ']+([- ][A-Za-zÀ-ÖØ-öø-ÿ']+)*$/,
+  /*name: /^[A-Za-zÀ-ÖØ-öø-ÿ']+([- ][A-Za-zÀ-ÖØ-öø-ÿ']+)*$/, */
+  name: /^[A-Z][Ña-zñáéíóúÁÉÍÓÚ'° ]+$/,
   email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-  phone: /^(?:\+\d{1,3}\s?)?\(?\d{1,4}\)?[-.\s]?\d{1,10}[-.\s]?\d{1,10}$/,
 };
 
 const form = document.getElementById("form");
@@ -20,17 +20,17 @@ const validate = (e) => {
 
   inputName.value.trim() === "" &&
     errorsArray.push("El nombre es un campo obligatorio"),
-    inputName.style.outline = "1px solid red";
+    (inputName.style.outline = "1px solid red");
   !patterns.name.test(inputName.value.trim()) &&
     errorsArray.push(
       "Un nombre propio comienza siempre por una letra mayúscula y no contiene números"
     ),
-    inputName.style.outline = "1px solid red";
+    (inputName.style.outline = "1px solid red");
   !patterns.email.test(email.value.trim()) &&
     errorsArray.push("Introduce una dirección de correo electrónico válida"),
-    email.style.outline = "1px solid red";
+    (email.style.outline = "1px solid red");
   message.value.length < 10 && errorsArray.push("Mensaje demasiado corto"),
-    message.style.outline = "1px solid red";
+    (message.style.outline = "1px solid red");
 
   if (errorsArray.length === 0 && confirm("¿Desea enviar el formulario?")) {
     errorsMessage.textContent = "";
@@ -52,7 +52,7 @@ const resetErrors = (id) => {
 
 /* Almacena todos los elementos del formulario en un array */
 const formElements = Array.from(form.elements);
- /* Recorre los elementos del array y los limpia cuando editamos */
+/* Recorre los elementos del array y los limpia cuando editamos */
 formElements.forEach((element) => {
   element.addEventListener("input", () => resetErrors(element.id));
 });
