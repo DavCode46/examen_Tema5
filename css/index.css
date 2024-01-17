@@ -30,8 +30,39 @@
       --h1-size: 1.8rem;
       --p-size: 1.2rem;
       --section-height: 50vh;
+      --h2-size: 1.5rem;
     } 
 
+    body {
+      font-size: 1rem;
+    }
+
+    
+
+    .main__section form {
+      width: 98%;
+    }
+
+    .main__section form label {
+      font-size: .9rem;
+    }
+
+    .hero__section {
+      clip-path: ellipse(30% 30% at 50% 50%);
+    }
+  }
+
+  @media (width < 700px ){
+    :root {
+      --h1-size: 1.8rem;
+      --p-size: 1.2rem;
+    }
+  }
+
+  @media (width <= 1024px ){ 
+    .main__section form {
+      width: 80%;
+    }
     h1 {
       text-align: center;
     }
@@ -40,22 +71,8 @@
       text-align: center;
     }
 
-    .main__section form {
-      width: 90%;
-    }
-
     .hero__section {
-      clip-path: ellipse(30% 30% at 50% 50%);
-    }
-  }
-
-  @media (width < 1024px ){ 
-    .main__section form {
-      width: 80%;
-    }
-
-    .hero__section {
-      clip-path: ellipse(30% 30% at 50% 50%);
+      clip-path: ellipse(50% 30% at 50% 50%);
     }
   }
 
@@ -89,7 +106,7 @@
   }
 
   .hero__section {
-    clip-path: ellipse(49% 50% at 50% 50%);
+    clip-path: ellipse(50% 30% at 50% 50%);
     display: flex;
     color: var(--white);
     flex-direction: column;
@@ -127,6 +144,11 @@
     box-shadow: var(--dark-shadow);
     background-color: var(--light-white);
     border-radius: 5px;
+  }
+
+  form label {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   form input:not(input[type='submit']),
