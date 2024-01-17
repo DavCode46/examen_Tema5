@@ -1,14 +1,7 @@
 const patterns = {
     name:  /^[A-Za-zÀ-ÖØ-öø-ÿ']+([- ][A-Za-zÀ-ÖØ-öø-ÿ']+)*$/,
-    lastname:  /^[A-Za-zÀ-ÖØ-öø-ÿ']+([- ][A-Za-zÀ-ÖØ-öø-ÿ']+)*$/,
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
     phone: /^(?:\+\d{1,3}\s?)?\(?\d{1,4}\)?[-.\s]?\d{1,10}[-.\s]?\d{1,10}$/,
-    dni: /^\d{8}[a-zA-Z]$/,
-    postalCode: /^\d{5}$/,
-    city: /^[A-Za-zÀ-ÖØ-öø-ÿ']+([- ][A-Za-zÀ-ÖØ-öø-ÿ']+)*$/,
-    address: /^[A-Za-zÀ-ÖØ-öø-ÿ']+([- ][A-Za-zÀ-ÖØ-öø-ÿ']+)*$/,
-    plate: /^\d{4}[A-Z]{3}\d{2}$/,
 }
 
 const form = document.getElementById('form');
@@ -27,7 +20,20 @@ const validate = (e) => {
 
     inputName.value.trim() === '' && errorsArray.push('El nombre es un campo obligatorio'), inputName.style.outline = '1px solid red';
     !patterns.name.test(inputName.value.trim()) && errorsArray.push('Un nombre propio comienza siempre por una letra mayúscula y no contiene números'), inputName.style.outline = '1px solid red';
-    !patterns.email.test(email.value.trim()) && errorsArray.push()
+    !patterns.email.test(email.value.trim()) && errorsArray.push('Introduce una dirección de correo electrónico válida'), email.style.outline = '1px solid red';
+    message.value.trim().length < 10 && errorsArray.push('Mensaje demasiado corto'), message.style.outline = '1px solid red';
+
+    if(errorsArray.length === 0) {
+        errorsMessage = '';
+        form.submit();
+        
+    } else if(errorsArray.length > 0) {
+        errorsMessage.textContent = '';
+        errorsArray.forEach(error => {
+            errorsMessage.innerHTML += `<li>${error}</li>`;
+        })
+        errorsMessage.style.color = 'red';
+    }
 }
 
 const resetErrors = (id) => {
@@ -35,8 +41,10 @@ const resetErrors = (id) => {
     element.style.outline = 'none';
 }
 
-const formElements = Array.from(formElements);
+const formElements = Array.from(form.elements);
 
 formElements.forEach(element => {
     element.addEventListener('input', () => resetErrors(element.id));
 })
+
+form.addEventListener('submit', validate);
