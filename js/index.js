@@ -13,6 +13,7 @@ const infoBtn = document.getElementById("info-btn");
 const message = document.getElementById("message");
 let errorsMessage = document.getElementById("errors-message");
 
+/* Función que valida los datos introducidos en el formulario */
 const validate = (e) => {
   e.preventDefault();
   let errorsArray = [];
@@ -43,17 +44,20 @@ const validate = (e) => {
   }
 };
 
+/* Función que limpia los errores  */
 const resetErrors = (id) => {
   const element = document.getElementById(id);
   element.style.outline = "none";
 };
 
+/* Almacena todos los elementos del formulario en un array */
 const formElements = Array.from(form.elements);
-
+ /* Recorre los elementos del array y los limpia cuando editamos */
 formElements.forEach((element) => {
   element.addEventListener("input", () => resetErrors(element.id));
 });
 
+/* Lanza una alerta en función del radio Button seleccionado */
 infoBtn.addEventListener("click", (e) => {
   e.preventDefault();
   radio1.checked &&
@@ -66,4 +70,5 @@ infoBtn.addEventListener("click", (e) => {
     );
 });
 
+/* Valida el formulario */
 form.addEventListener("submit", validate);
